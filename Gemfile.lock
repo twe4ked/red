@@ -1,0 +1,13 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    terminal_game_engine (0.3.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  terminal_game_engine
+
+BUNDLED WITH
+   1.13.5
