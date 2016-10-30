@@ -7,7 +7,6 @@ class Buffer
   def to_s
     buffer
       .each_slice(width)
-      .to_a
       .map(&:join)
       .join("\n")
   end
