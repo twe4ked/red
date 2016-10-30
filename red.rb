@@ -9,7 +9,7 @@ TerminalGameEngine.run do
   width = 80
 
   buffer = Buffer.new width: width
-  cursor = Point.new(width: width)
+  cursor = Point.new width: width
 
   mode = :insert
 
