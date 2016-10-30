@@ -8,7 +8,7 @@ TerminalGameEngine.run do
   height = 25
   width = 80
 
-  buffer = Buffer.new
+  buffer = Buffer.new width: width
   cursor = Point.new(width: width)
 
   mode = :insert
@@ -47,7 +47,7 @@ TerminalGameEngine.run do
       end
     end
 
-    frame.draw 0, 0, buffer.to_s(width: width)
+    frame.draw 0, 0, buffer.to_s
 
     frame.render
 

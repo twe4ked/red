@@ -1,9 +1,10 @@
 class Buffer
-  def initialize buffer: []
+  def initialize buffer: [], width:
     @buffer = buffer
+    @width = width
   end
 
-  def to_s width:
+  def to_s
     buffer
       .each_slice(width)
       .to_a
@@ -12,7 +13,7 @@ class Buffer
   end
 
   def << char
-    Buffer.new buffer: buffer << char
+    Buffer.new buffer: buffer << char, width: width
   end
 
   def delete
@@ -21,5 +22,5 @@ class Buffer
 
   private
 
-  attr_reader :buffer
+  attr_reader :buffer, :width
 end
