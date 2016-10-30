@@ -2,6 +2,7 @@ require 'terminal_game_engine'
 
 require 'lib/point'
 require 'lib/buffer'
+require 'lib/keys'
 
 TerminalGameEngine.run do
   height = 25
@@ -15,12 +16,12 @@ TerminalGameEngine.run do
 
     on_input do |key_code|
       case
-      when key_code == TerminalGameEngine::Input::Keys::CTRL_C
+      when key_code == Keys::CTRL_C
         exit
       when key_code.chr =~ /[[:print:]]/
         buffer << key_code.chr
         cursor = cursor.right
-      when key_code = 127 # Backspace
+      when key_code = Keys::BACKSPACE
         buffer = buffer.delete
         cursor = cursor.left
       else
