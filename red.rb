@@ -48,6 +48,10 @@ TerminalGameEngine.run do
           exit
         when 'i'
           mode = :insert
+        when 'h'
+          cursor = cursor.left
+        when 'l'
+          cursor = cursor.right
         end
       end
     end
