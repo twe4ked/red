@@ -11,25 +11,39 @@ TerminalGameEngine.run do
   buffer = Buffer.new
   cursor = Point.new(width: width)
 
+  mode = :insert
+
   on_tick do |tick|
     frame = TerminalGameEngine::Frame.new width, height
 
     on_input do |key|
-      case
-      when key == Keys::CTRL_C
-        exit
-      when key =~ /[[:print:]]/
-        buffer << key
-        cursor = cursor.right
-      when key = Keys::BACKSPACE
-        if cursor.beginning_of_line?
-          cursor = cursor.left
+      case mode
+      when :insert
+        case
+        when key == Keys::CTRL_C
+          exit
+        when key == Keys::ESCAPE
+          mode = :normal
+        when key =~ /[[:print:]]/
+          buffer << key
+          cursor = cursor.right
+        when key = Keys::BACKSPACE
+          if cursor.beginning_of_line?
+            cursor = cursor.left
+          else
+            buffer = buffer.delete
+            cursor = cursor.left
+          end
         else
-          buffer = buffer.delete
-          cursor = cursor.left
+          raise key
         end
-      else
-        raise key
+      when :normal
+        case
+        when key == Keys::CTRL_C
+          exit
+        when key == 'i'
+          mode = :insert
+        end
       end
     end
 
