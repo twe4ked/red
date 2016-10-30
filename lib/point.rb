@@ -25,9 +25,9 @@ class Point
     new_y = y
 
     case
-    when x == 0 && y == 0
+    when beginning_of_line? && y == 0
       new_y = new_x = 0
-    when x == 0
+    when beginning_of_line?
       new_y -= 1
       new_x = width
     end
