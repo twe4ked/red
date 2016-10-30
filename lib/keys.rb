@@ -1,4 +1,4 @@
 module Keys
-  CTRL_C = 3
-  BACKSPACE = 127
+  CTRL_C = ?\C-c
+  BACKSPACE = "\b"
 end

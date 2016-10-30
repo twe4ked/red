@@ -14,14 +14,14 @@ TerminalGameEngine.run do
   on_tick do |tick|
     frame = TerminalGameEngine::Frame.new width, height
 
-    on_input do |key_code|
+    on_input do |key|
       case
-      when key_code == Keys::CTRL_C
+      when key == Keys::CTRL_C
         exit
-      when key_code.chr =~ /[[:print:]]/
-        buffer << key_code.chr
+      when key =~ /[[:print:]]/
+        buffer << key
         cursor = cursor.right
-      when key_code = Keys::BACKSPACE
+      when key = Keys::BACKSPACE
         if cursor.beginning_of_line?
           cursor = cursor.left
         else
@@ -29,7 +29,7 @@ TerminalGameEngine.run do
           cursor = cursor.left
         end
       else
-        raise key_code.to_s
+        raise key
       end
     end
 
