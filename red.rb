@@ -31,8 +31,8 @@ TerminalGameEngine.run do
           if cursor.beginning_of_line?
             cursor = cursor.left
           else
-            buffer = buffer.delete
             cursor = cursor.left
+            buffer = buffer.delete cursor.coordinates
           end
         else
           raise key
