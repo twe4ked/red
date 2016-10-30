@@ -9,7 +9,7 @@ TerminalGameEngine.run do
   width = 80
 
   buffer = Buffer.new width: width
-  cursor = Point.new width: width
+  cursor = Point.new width: width, height: height
 
   mode = :insert
 
@@ -52,6 +52,10 @@ TerminalGameEngine.run do
           cursor = cursor.left
         when 'l'
           cursor = cursor.right
+        when 'j'
+          cursor = cursor.down
+        when 'k'
+          cursor = cursor.up
         end
       end
     end

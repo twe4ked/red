@@ -1,7 +1,8 @@
 class Point
-  def initialize coordinates: [0, 0], width:
+  def initialize coordinates: [0, 0], width:, height:
     @x, @y = *coordinates
     @width = width
+    @height = height
   end
 
   def coordinates
@@ -17,7 +18,7 @@ class Point
       new_x = 0
     end
 
-    Point.new coordinates: [new_x, new_y], width: width
+    Point.new coordinates: [new_x, new_y], width: width, height: height
   end
 
   def left
@@ -32,7 +33,21 @@ class Point
       new_x = width
     end
 
-    Point.new coordinates: [new_x, new_y], width: width
+    Point.new coordinates: [new_x, new_y], width: width, height: height
+  end
+
+  def up
+    new_x = x
+    new_y = [y - 1, 0].max
+
+    Point.new coordinates: [new_x, new_y], width: width, height: height
+  end
+
+  def down
+    new_x = x
+    new_y = [y + 1, height-2].min
+
+    Point.new coordinates: [new_x, new_y], width: width, height: height
   end
 
   def beginning_of_line?
@@ -41,5 +56,5 @@ class Point
 
   private
 
-  attr_reader :x, :y, :width
+  attr_reader :x, :y, :width, :height
 end
