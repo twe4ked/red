@@ -34,6 +34,10 @@ class Point
     Point.new coordinates: [new_x, new_y], width: width
   end
 
+  def beginning_of_line?
+    x == 0
+  end
+
   private
 
   attr_reader :x, :y, :width

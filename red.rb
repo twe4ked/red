@@ -22,8 +22,12 @@ TerminalGameEngine.run do
         buffer << key_code.chr
         cursor = cursor.right
       when key_code = Keys::BACKSPACE
-        buffer = buffer.delete
-        cursor = cursor.left
+        if cursor.beginning_of_line?
+          cursor = cursor.left
+        else
+          buffer = buffer.delete
+          cursor = cursor.left
+        end
       else
         raise key_code.to_s
       end
