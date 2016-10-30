@@ -38,10 +38,10 @@ TerminalGameEngine.run do
           raise key
         end
       when :normal
-        case
-        when key == Keys::CTRL_C
+        case key
+        when Keys::CTRL_C
           exit
-        when key == 'i'
+        when 'i'
           mode = :insert
         end
       end
