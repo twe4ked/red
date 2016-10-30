@@ -12,8 +12,7 @@ class Point
     new_x = x + 1
     new_y = y
 
-    # if we're at the end of a line
-    if new_x % width == 0
+    if x >= 9
       new_y += 1
       new_x = 0
     end
@@ -25,8 +24,7 @@ class Point
     new_x = x - 1
     new_y = y
 
-    # if we're at the end of a line
-    if new_x % width == 0
+    if x == 0
       new_y -= 1
       new_x = width
     end
