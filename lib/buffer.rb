@@ -25,6 +25,10 @@ class Buffer
     Buffer.new buffer: left + right, width: width
   end
 
+  def size
+    buffer.size
+  end
+
   private
 
   attr_reader :buffer, :width

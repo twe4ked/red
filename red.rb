@@ -25,8 +25,13 @@ TerminalGameEngine.run do
         when key == Keys::ESCAPE
           mode = :normal
         when key =~ /[[:print:]]/
-          buffer << key
-          cursor = cursor.right
+          max_chars = width * (height-1)
+          if buffer.size >= max_chars-1
+            print "\a"
+          else
+            buffer << key
+            cursor = cursor.right
+          end
         when key = Keys::BACKSPACE
           if cursor.beginning_of_line?
             cursor = cursor.left
