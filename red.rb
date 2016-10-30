@@ -53,6 +53,8 @@ TerminalGameEngine.run do
     end
 
     frame.draw 0, 0, buffer.to_s
+    frame.draw width-4, height-1, buffer.size.to_s.rjust(4, '0')
+    frame.draw 0, height-1, "[#{mode.to_s.upcase}]"
 
     frame.render
 
