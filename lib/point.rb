@@ -24,7 +24,10 @@ class Point
     new_x = x - 1
     new_y = y
 
-    if x == 0
+    case
+    when x == 0 && y == 0
+      new_y = new_x = 0
+    when x == 0
       new_y -= 1
       new_x = width
     end
