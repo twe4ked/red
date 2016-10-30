@@ -12,7 +12,7 @@ class Point
     new_x = x + 1
     new_y = y
 
-    if x >= 9
+    if x >= width-1
       new_y += 1
       new_x = 0
     end
